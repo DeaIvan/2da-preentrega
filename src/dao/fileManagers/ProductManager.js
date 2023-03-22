@@ -39,8 +39,8 @@ export default class ProductManager {
                 if (codeIndex === -1 && checkTrim === -1) {
                     products.push(product)
                 } else {
-                    codeIndex !== -1 && console.error('El identificador code ya esta en otro producto')
-                    checkTrim !== -1 && console.error('Hay un campo vacio')
+                    codeIndex !== -1 && console.error('El identificador ya existe')
+                    checkTrim !== -1 && console.error('Debe completar todos los campos')
                 }
     
     
@@ -107,14 +107,14 @@ export default class ProductManager {
             const objs = await this.getProducts()
             const index = objs.findIndex(o => o.id == idProduct)
             if (index == -1) {
-                throw new Error(`Error al borrar: no se encontró el id ${idProduct}`)
+                throw new Error(`Error: no se encontró el id ${idProduct}`)
             }
 
             objs.splice(index, 1)
             try {
                 await fs.promises.writeFile(this.path, JSON.stringify(objs, null, 2))
             } catch (error) {
-                throw new Error(`Error al borrar: ${error}`)
+                throw new Error(`Error: ${error}`)
             }
         }
     }

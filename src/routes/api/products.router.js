@@ -22,20 +22,7 @@ router.get('/', async (req, res) => {
                 res.send({status: 'success', payload: response})
             })
             
-        } else {
-            if(query == "comida" || query == "bebida" || query == "complemento") {
-                const productsPaginates = await productModel.paginate({ category: query }, {limit: limit, page: page, sort:{ price: sort}}, (err, result) => {
-                    const nextPage = result.hasNextPage ? `localhost:8080/api/products?query=${query}&limit=${limit}&page=${result.nextPage}`: null
-                    const prevPage = result.hasPrevPage ? `localhost:8080/api/products?query=${query}limit=${limit}&page=${result.prevPage}`: null
-                const response = {
-                    ...result,
-                    nextLink: nextPage,
-                    prevLink: prevPage 
-                }
-                res.send({status: 'success', payload: response})
-                })
-            }
-            else if(query == "true" || query == "false"){
+        }  else{ if(query == "true" || query == "false"){
                 const productsPaginates = await productModel.paginate({ status: query }, {limit: limit, page: page, sort:{ price: sort}}, (err, result) => {
                     const nextPage = result.hasNextPage ? `localhost:8080/api/products?query=${query}&limit=${limit}&page=${result.nextPage}`: null
                     const prevPage = result.hasPrevPage ? `localhost:8080/api/products?query=${query}limit=${limit}&page=${result.prevPage}`: null
@@ -48,8 +35,8 @@ router.get('/', async (req, res) => {
                 })
             }
             else{
-                console.log('query is not valid')
-                res.send({status: error, payload: 'query is not valid'})
+                console.log('valor incorrecto')
+                res.send({status: error, payload: 'valor incorrecto'})
             }
         }
 
@@ -71,7 +58,7 @@ router.get('/:pid', async (req, res) => {
 
 router.post('/', async (req, res) => {
     const { title, description, price, thumbnail, code, stock, category, status} = req.body
-    if(!title || !description || !price || !code || !stock || !category) return res.status(400).send({ status: 'error', error: 'Incomplete values'})
+    if(!title || !description || !price || !code || !stock || !category) return res.status(400).send({ status: 'error', error: 'Debe completar todos los campos'})
 
     try {
         const result = await productManager.createProduct({

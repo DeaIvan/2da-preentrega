@@ -2,7 +2,6 @@ import messageModel from '../models/messageModel.js'
 
 export default class Message{
     constructor() {
-        console.log('Obteniendo mensajes de la base de datos de MongoDB...')
     }
 
     getMessages = async () => {

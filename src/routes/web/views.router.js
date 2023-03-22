@@ -25,13 +25,7 @@ router.get('/products', async (req, res) => {
             const products = productsPaginates.docs
             res.render('products', {products})
             
-        } else {
-            if(query == "comida" || query == "bebida" || query == "complemento") {
-                const productsPaginates = await productModel.paginate({ category: query }, {limit: limit, page: page, sort:{ price: sort}, lean:true})
-                const products = productsPaginates.docs
-            res.render('products', {products})
-            }
-            else if(query == "true" || query == "false"){
+        } else { if(query == "true" || query == "false"){
                 const productsPaginates = await productModel.paginate({ status: query }, {limit: limit, page: page, sort:{ price: sort}, lean:true})
                 const products = productsPaginates.docs
             res.render('products', {products})

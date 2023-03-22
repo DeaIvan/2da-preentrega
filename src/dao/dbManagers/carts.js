@@ -1,7 +1,6 @@
 import {cartsModel} from "../models/cartsModel.js";
 export default class Carts {
     constructor() {
-        console.log('Obteniendo carritos de la base de datos de MongoDB...')
     }
 
     getCarts = async () => {

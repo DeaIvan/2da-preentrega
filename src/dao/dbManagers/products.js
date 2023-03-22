@@ -2,7 +2,6 @@ import { productModel } from '../models/productModel.js'
 
 export default class Products {
     constructor() {
-        console.log('Obteniendo productos de la base de datos de MongoDB...')
     }
 
     getProducts = async () => {

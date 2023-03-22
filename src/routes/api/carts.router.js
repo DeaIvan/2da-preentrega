@@ -38,7 +38,7 @@ router.post('/:cid/products/:pid', async (req, res) => {
     const pid = req.params.pid
     try {
         const result = await cartsManager.addProductInCart(cid, pid)
-        res.send({status: 'success', message: 'The product with id ' + pid + ' was added successfully from cart ' + cid + '', payload:result})
+        res.send({status: 'success', message: 'El producto con el id ' + pid + ' se agrego correctamente ' + cid + '', payload:result})
     } catch (error) {
         res.status(500).send({error: 'el error es ' + error})
     }
@@ -50,7 +50,7 @@ router.delete('/:cid/products/:pid', async (req, res) => {
     const pid = req.params.pid;
     try {
         await cartsManager.deleteProductInCart(cid, pid)
-        res.send({status: 'success', message: 'The product with id ' + pid + ' was deleted successfully from cart ' + cid + ''})
+        res.send({status: 'success', message: 'El producto con el id ' + pid + ' se elimino correctamente ' + cid + ''})
     } catch (error) {
         res.status(500).send({error: 'el error es ' + error})
     }
@@ -61,7 +61,7 @@ router.delete('/:cid', async (req, res) => {
     const cid = req.params.cid
     try {
         const result = await cartsManager.deleteCart(cid)
-        res.send({status: 'success', message: 'The cart with id '+ cid + 'was deleted successfully', payload: result})
+        res.send({status: 'success', message: 'El carrito con el id '+ cid + ' se elimino correctamente ', payload: result})
     } catch (error) {
         // console.log(error)
         res.status(500).send({error: 'el error es ' + error})
@@ -73,7 +73,7 @@ router.put('/:cid/products/:pid', async (req, res) => {
     const quantity = req.body
     try {
         const result = await cartsManager.updateQuantity(cid, pid, quantity)
-        res.send({status: 'success', message: 'The product with id ' + pid + ' was changed it quantity from cart ' + cid + '', payload: result})
+        res.send({status: 'success', message: 'El producto con el id ' + pid + ' se actualizo correctamente ', payload: result})
     } catch (error) {
         // console.log(error)
         res.status(500).send({error: 'el error es ' + error})
@@ -84,7 +84,7 @@ router.put('/:cid', async (req, res) => {
     const cartId = req.params.cid;
     const products = req.body;
     const result = cartsManager.updateCart(cartId,products)
-        res.send({status: 'success',message: 'The cart with id ' + cartId + ' was updated successfully with the required products.'});
+        res.send({status: 'success',message: 'El carrito con el id ' + cartId + ' se actualizo en cuanto a la cantidad de productos.'});
         });
 
 

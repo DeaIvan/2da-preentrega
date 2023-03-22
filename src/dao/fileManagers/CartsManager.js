@@ -54,7 +54,7 @@ export default class CartManager {
         const carts = await this.getCarts()
         try {
             const cart = carts.find(c => c.id === cid)
-            if(cid > carts.length || !cart) return console.log("cart id doesn't exist")
+            if(cid > carts.length || !cart) return console.log("carrito inexistente")
             
             function addPost(post) {
 
