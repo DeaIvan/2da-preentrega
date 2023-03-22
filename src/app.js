@@ -27,7 +27,7 @@ app.use('/api/carts', cartsRouter)
 
 
 try {
-    await mongoose.connect('mongodb+srv://ivandeagustini:1234ivan@cluster0.se1agzq.mongodb.net/?retryWrites=true&w=majority')
+    await mongoose.connect('mongodb+srv://ivandeagustini:ivanrd028@cluster0.se1agzq.mongodb.net/?retryWrites=true&w=majority')
 } catch (error) {
     console.log(error)
 }
